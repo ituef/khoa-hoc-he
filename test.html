@@ -1,0 +1,100 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Home Page</title>
+    <script src="Scripts/modernizr-2.6.2.js"></script>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Application name</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Help">API</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        
+
+
+<h1 onclick="TesstOK();">TEST API</h1>
+
+<ul class="list-group">
+    
+</ul>
+
+<script type="application/javascript">
+
+function TesstOK() {
+  // Call Web API to get a list of Product
+  $.ajax({
+    url: 'http://localhost:57006/api/Values',
+    type: 'GET',
+    dataType: 'json',
+    success: function (products) {
+      productListSuccess(products);
+    },
+    error: function (request, message, error) {
+      handleException(request, message, error);
+    }
+  });
+}
+function productListSuccess(products) {
+  // Iterate over the collection of data
+  $.each(products, function (index, product) {
+    // Add a row to the Product table
+    console.log(product);
+  });
+}
+function handleException(request, message,
+                         error) {
+  var msg = "";
+  msg += "Code: " + request.status + "\n";
+  msg += "Text: " + request.statusText + "\n";
+  if (request.responseJSON != null) {
+    msg += "Message" +
+        request.responseJSON.Message + "\n";
+  }
+  alert(msg);
+}
+
+    
+</script>
+        <hr />
+        <footer>
+            <p>&copy; 2019 - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="Scripts/jquery-1.10.2.js"></script>
+
+    <script src="Scripts/bootstrap.js"></script>
+<script src="Scripts/respond.js"></script>
+
+    
+
+
+
+
+
+<!-- Visual Studio Browser Link -->
+<script type="application/json" id="__browserLink_initializationData">
+    {"appName":"Chrome","requestId":"87f1fd98a4c5488ea0a5cf41fcb0232c"}
+</script>
+<script type="text/javascript" src="http://localhost:56650/0efd43a4b5b7476e9b4c894e51940a3c/browserLink" async="async"></script>
+<!-- End Browser Link -->
+
+</body>
+</html>
